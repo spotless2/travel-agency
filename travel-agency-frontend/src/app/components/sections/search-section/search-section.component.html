@@ -1,0 +1,36 @@
+<section class="page-section" id="search" style="">
+  <div class="container">
+    <div class="text-center">
+      <div ngbDropdown class="dropdown">
+        <button
+          class="btn btn-primary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          aria-expanded="false"
+          style="margin-bottom: 30px"
+          ngbDropdownToggle
+        >
+          What are you looking for?
+        </button>
+        <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item my-dropdown-item" (click)="setOption('flight')">Flights</a>
+          <a class="dropdown-item my-dropdown-item" (click)="setOption('hotel')">Hotels</a>
+          <a class="dropdown-item my-dropdown-item" (click)="setOption('car')">Car rental</a>
+        </ul>
+      </div>
+
+      <div class="selected-option">
+        <div *ngIf="selectedOption === 'flight'">
+          <app-flight-booking></app-flight-booking>
+        </div>
+        <div *ngIf="selectedOption === 'hotel'">
+          <app-hotel-booking></app-hotel-booking>
+        </div>
+        <div *ngIf="selectedOption === 'car'">
+          <app-car-rental></app-car-rental>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

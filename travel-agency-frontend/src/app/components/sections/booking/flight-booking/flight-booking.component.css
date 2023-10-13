@@ -1,0 +1,25 @@
+.airport-dropdown {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 100%;
+  max-height: 200px; /* Set a maximum height for the dropdown */
+  overflow-y: auto; /* Add scrolling for overflow content */
+}
+
+.airport-dropdown ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.airport-dropdown li {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.airport-dropdown li:hover {
+  background-color: #f0f0f0;
+}

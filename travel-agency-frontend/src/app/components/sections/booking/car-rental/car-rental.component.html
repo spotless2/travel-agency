@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="card p-4 mt-5">
+    <form [formGroup]="rentalForm" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+
+        <div class="col-12 mb-4">
+          <h4>Book a Car</h4>
+          <span class="text-muted">Please complete the form below to rent a car for your next destination.</span>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+          <div class="form-floating">
+            <input type="text" formControlName="location" class="form-control" [ngClass]="{ 'is-invalid': submitted && rentalForm.get('location').errors }">
+            <div *ngIf="submitted && rentalForm.get('location').errors" class="invalid-feedback">
+              <div *ngIf="rentalForm.get('location').hasError('required')">Location name is required</div>
+            </div>
+            <label>Location</label>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+          <div class="form-floating">
+            <select class="form-select" formControlName="vehicleType" [ngClass]="{ 'is-invalid': submitted && rentalForm.get('vehicleType').errors }">
+              <option selected="" hidden="">Select</option>
+              <option value="small">Small car</option>
+              <option value="family">Family car</option>
+            </select>
+            <div *ngIf="submitted && rentalForm.get('vehicleType').errors" class="invalid-feedback">
+              <div *ngIf="rentalForm.get('vehicleType').hasError('required')">Vehicle type is required</div>
+            </div>
+            <label>Vehicle Type</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <div class="d-flex align-items-center">
+              <input type="checkbox" formControlName="ecoFriendly" class="form-check-input">
+              <span class="ms-2">Search for Eco-Friendly cars (extra $10)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-floating">
+            <div class="d-flex align-items-center">
+              Price: {{ carPrice | currency:'USD':'symbol':'1.2-2' }}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 mt-4">
+          <button class="btn btn-primary text-uppercase" type="submit">Book the Car<i class="fa fa-car ms-3"></i></button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

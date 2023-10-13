@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="card p-4 mt-5">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+
+        <div class="col-12 mb-4">
+          <h4>Search Accommodation</h4>
+          <span class="text-muted">Please complete the form below to view available accommodation options.</span>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="form-floating">
+            <input type="text" [(ngModel)]="query" (input)="fetchSearchLocation(query)" placeholder="Enter destination" formControlName="ffrom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ffrom.errors }">
+            <div class="locations-dropdown" *ngIf="suggestedLocations && suggestedLocations.length > 0">
+              <ul>
+                <li *ngFor="let location of suggestedLocations" (click)="selectLocation(location)">
+                  <span *ngIf="location.geoId" [innerHTML]="location.title"></span>
+                </li>
+              </ul>
+            </div>
+            <div *ngIf="submitted && f.ffrom.errors" class="invalid-feedback">
+              <div *ngIf="f.ffrom.errors.required">Accommodation location is required</div>
+            </div>
+            <label>Enter destination</label>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="form-floating">
+            <select class="form-select" formControlName="rooms"  [ngClass]="{ 'is-invalid': submitted && f.rooms.errors }">
+              <option selected="" hidden="">Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <div *ngIf="submitted && f.rooms.errors" class="invalid-feedback">
+              <div *ngIf="f.rooms.errors.required">Number of rooms is required</div>
+            </div>
+            <label>Rooms</label>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="form-floating">
+            <input type="date" placeholder="Check-in" formControlName="checkIn" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.checkIn.errors }">
+            <div *ngIf="submitted && f.checkIn.errors" class="invalid-feedback">
+              <div *ngIf="f.checkIn.errors.required">Check-in date is required</div>
+            </div>
+            <label>Check-in</label>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="form-floating">
+            <input type="date" placeholder="Check-out" formControlName="checkOut" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.checkOut.errors }">
+            <div *ngIf="submitted && f.checkOut.errors" class="invalid-feedback">
+              <div *ngIf="f.checkOut.errors.required">Check-out date is required</div>
+            </div>
+            <label>Check-out</label>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="form-floating">
+            <select class="form-select" formControlName="adults"  [ngClass]="{ 'is-invalid': submitted && f.adults.errors }">
+              <option selected="" hidden="">Select</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <div *ngIf="submitted && f.adults.errors" class="invalid-feedback">
+              <div *ngIf="f.adults.errors.required">Number of adults is required</div>
+            </div>
+            <label>Adults (18+)</label>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="form-floating">
+            <select class="form-select" formControlName="children"  [ngClass]="{ 'is-invalid': submitted && f.children.errors }">
+              <option selected="" hidden="">Select</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <div *ngIf="submitted && f.children.errors" class="invalid-feedback">
+              <div *ngIf="f.children.errors.required">Number of children is required</div>
+            </div>
+            <label>Children (0-17)</label>
+          </div>
+        </div>
+        <div class="col-12 mt-4">
+          <button class="btn btn-primary text-uppercase" type="submit">Search Accommodation<i class="fa fa-hotel ms-3"></i></button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

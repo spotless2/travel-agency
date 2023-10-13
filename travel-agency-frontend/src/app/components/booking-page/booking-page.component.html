@@ -1,0 +1,89 @@
+<div *ngIf="source=='flight'" class="container">
+  <h2 class="title">Booking details for the flight</h2>
+  <div class="flight-details">
+    <p><strong>Departure:</strong> {{ flight.departureName }}</p>
+    <p><strong>Destination:</strong> {{ flight.arrivalName }}</p>
+    <p><strong>Departure Date:</strong> {{ flight.departureDateTime }}</p>
+    <p><strong>Total Price:</strong> {{ "$" + flight.totalPrice}}</p>
+    <!-- Add more flight details here -->
+  </div>
+</div>
+
+<div *ngIf="source=='hotel'" class="container">
+  <h2 class="title">Booking details for hotel</h2>
+  <div class="flight-details">
+    <p><strong>Hotel name:</strong> {{ hotel.title }}</p>
+    <p><strong>Check-in Date:</strong> {{ hotel.checkIn }}</p>
+<p><strong>Check-out Date:</strong> {{ hotel.checkOut}}</p>
+    <p><strong>Total price:</strong> {{ hotel.priceForDisplay}}</p>
+    <!-- Add more flight details here -->
+  </div>
+</div>
+
+<div *ngIf="source=='car'" class="container">
+  <h2 class="title">Booking details for car rental</h2>
+  <div class="flight-details">
+    <p><strong>Car-rental location:</strong> {{ carObject?.location }}</p>
+    <p><strong>Vehicle type:</strong> {{ carObject?.vehicleType }}</p>
+    <p><strong>Is eco-friendly:</strong> {{ carObject?.isEcoFriendly? "Yes" : "No" }}</p>
+    <p><strong>Total price:</strong> {{ "$" + carObject?.price}}</p>
+    <!-- Add more flight details here -->
+  </div>
+</div>
+
+<div class = container>
+  <div class="form-area">
+    <h3>User Information</h3>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" required>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="middleName">Middle Name</label>
+          <input type="text" class="form-control" id="middleName">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" id="lastName" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" class="form-control" id="country" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Phone Number</label>
+        <input type="text" class="form-control" id="phoneNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" required>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="form-area">
+    <h3>Credit or Debit Card</h3>
+    <div id="card-element">
+      <!-- a Stripe element will be inserted here -->
+    </div>
+    <!-- Used to display form errors -->
+    <div id="card-errors" class="displayError.textContent!=='': 'alert alert-danger mt-1'"></div>
+  </div>
+
+  <div class="button-container">
+    <button class="confirm-button" (click)="proceedToPayment()">Confirm Booking</button>
+  </div>
+  </div>

@@ -1,0 +1,20 @@
+<div class="container-sm">
+  <div class="title">Available Hotels</div>
+  <button class="go-back-button" (click)="goBack()">Go Back</button>
+</div>
+<div class="flight-card" *ngFor="let hotel of hotels; let i = index">
+  <div class="flight-details">
+    <div class="details">
+      <div>
+        <p><strong>Hotel Title: </strong> {{ hotel.title }}</p>
+        <p><strong>Info:</strong> {{ hotel.primaryInfo ? hotel.primaryInfo : 'Info not specified' }}</p>
+        <p><strong>Price:</strong> {{ hotel.priceForDisplay ? hotel.priceForDisplay : 'Price not specified' }}</p>
+        <p><strong>Rating:</strong> {{ hotel.bubbleRating.rating ? hotel.bubbleRating.rating + ' in ' + hotel.bubbleRating.count + ' reviews' : 'Rating not specified' }}</p>
+        <button class="book-button" (click)="bookHotel(hotel)">Book</button>
+      </div>
+      <div class="hotel-image">
+        <img src="{{ hotel.cardPhotos[0]?.sizes.urlTemplate | replaceWidthHeight:300:200 }}" alt="Hotel Image" />
+      </div>
+    </div>
+  </div>
+</div>
